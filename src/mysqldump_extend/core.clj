@@ -67,18 +67,22 @@
   (filter match-insert-into lines))
 
 (defn process-script
-  [filename]
-  (let [lines (extract-lines filename)]
+  [lines]
     (str (extract-preamble (extract-non-insert-lines lines))
          "\n"
          (process-queries (extract-insert-lines lines))
          "\n"
-         (extract-postamble (extract-non-insert-lines lines)))))
+         (extract-postamble (extract-non-insert-lines lines))))
+
+(defn process-script-file
+  [filename]
+  (let [lines (extract-lines filename)]
+    (process-script lines)))
 
 (def cli-options [])
 
 (defn -main [& args]
   (println
    (str/join "\n"
-             (map process-script
+             (map process-script-file
                   ((parse-opts args cli-options) :arguments)))))
