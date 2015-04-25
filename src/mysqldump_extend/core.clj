@@ -80,5 +80,6 @@
 
 (defn -main [& args]
   (println
-   (process-script
-    (first ((parse-opts args cli-options) :arguments)))))
+   (str/join "\n"
+    (map process-script
+        ((parse-opts args cli-options) :arguments)))))
