@@ -19,12 +19,16 @@
 
 (defn extract-query-header
   [query]
-  (str/join " " (first (split-at 4 (str/split query #" ")))))
+  (if (nil? query)
+    ""
+    (str/join " " (first (split-at 4 (str/split query #" "))))))
 
 (defn process-values
   [lines]
-  (str (str/join "," (map extract-values-from-query lines))
-       ";"))
+  (if (empty? lines)
+    ""
+    (str (str/join "," (map extract-values-from-query lines))
+         ";")))
 
 (defn process-queries
   [lines]
@@ -76,5 +80,5 @@
 (defn -main [& args]
   (println
    (str/join "\n"
-    (map process-script
-        ((parse-opts args cli-options) :arguments)))))
+             (map process-script
+                  ((parse-opts args cli-options) :arguments)))))
