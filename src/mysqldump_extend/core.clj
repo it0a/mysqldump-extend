@@ -71,12 +71,7 @@
          "\n"
          (extract-postamble (extract-non-insert-lines lines)))))
 
-(def cli-options
-  [["-l" "--limit LIMIT" "Limits the amount of values per insert"
-    :default 5000
-    :parse-fn #(Integer/parseInt %)
-    :validate [#(> % 0) "Must be a number greater than zero"]]
-   ["-h" "--help"]])
+(def cli-options [])
 
 (defn -main [& args]
   (println
