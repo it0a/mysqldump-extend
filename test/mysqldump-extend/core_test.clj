@@ -1,4 +1,4 @@
-(ns mdx.core-test
+(ns mysqldump-extend.core-test
   (:require [clojure.test :refer :all]
             [mdx.core :refer :all]))
 

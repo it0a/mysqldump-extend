@@ -1,4 +1,4 @@
-(ns mdx.core
+(ns mysqldump-extend.core
   (:require [clojure.java.io :as io]
             [clojure.string :as str]))
 
