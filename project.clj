@@ -1,4 +1,4 @@
-(defproject mysqldump-extend "0.1.1"
+(defproject mysqldump-extend "0.1.2"
   :description "turns your version control friendly mysqldumps into an extended-insert style script"
   :url "http://github.com/it0a"
   :license {:name "MIT License"}
