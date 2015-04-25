@@ -17,7 +17,13 @@ Will output a binary at target/mysqldump-extend (Add this to your PATH)
 ## Usage
 
 ```
-mysqldump-extend file1.sql file2.sql file3.sql > extended.sql
+mysqldump-extend data-non-extended-insert.sql > data-extended-insert.sql
+
+mysqldump-extend data1.sql data2.sql data3.sql > data-extended-insert.sql
+
+mysqldump-extend *.sql > data-extended-insert.sql
+
+mysqldump-extend *.sql | mysql -u user -p database_name
 ```
 
 ## License
