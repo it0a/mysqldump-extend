@@ -90,7 +90,7 @@
   [["-h" "--help"]])
 
 (defn -main [& args]
-    (let [opt-map (parse-opts args cli-options)]
-      (if (= ((opt-map :options) :help) true)
-        (println (help-str opt-map))
-        (println (str/join "\n" (map process-script-file (opt-map :arguments)))))))
+  (let [opt-map (parse-opts args cli-options)]
+    (if (= ((opt-map :options) :help) true)
+      (println (help-str opt-map))
+      (println (str/join "\n" (map process-script-file (opt-map :arguments)))))))
