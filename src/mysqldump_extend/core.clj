@@ -15,7 +15,7 @@
 (defn extract-values-from-query
   [query]
   (remove-last-char
-   (apply str (second (split-at 4 (str/split query #" "))))))
+   (apply str (second (str/split query #"INSERT INTO.*VALUES ")))))
 
 (defn extract-query-header
   [query]
