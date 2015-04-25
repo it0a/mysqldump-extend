@@ -4,4 +4,6 @@
   :license {:name "MIT License"}
   :main mysqldump-extend.core
   :dependencies [[org.clojure/clojure "1.6.0"]
-                 [org.clojure/tools.cli "0.3.1"]])
+                 [org.clojure/tools.cli "0.3.1"]]
+  :plugins [[lein-bin "0.3.4"]]
+  :bin {:name "mysqldump-extend"})

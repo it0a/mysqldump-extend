@@ -28,21 +28,21 @@
 
 (defn process-queries
   [lines]
-  (str (extract-query-header (first insertIntoLines))
-    " "
-    (process-values insertIntoLines)
-    "\n"))
+  (str (extract-query-header (first lines))
+       " "
+       (process-values lines)
+       "\n"))
 
 (defn extract-lines
   [filename]
-    (with-open [rdr (io/reader filename)]
-      (doall
-       (line-seq rdr))))
+  (with-open [rdr (io/reader filename)]
+    (doall
+     (line-seq rdr))))
 
 (defn split-preamble-postamble
   [lines]
   (split-at
-    (inc (.indexOf lines (first (filter #(.contains % "DISABLE KEYS") lines)))) lines))
+   (inc (.indexOf lines (first (filter #(.contains % "DISABLE KEYS") lines)))) lines))
 
 (defn extract-preamble
   [lines]
@@ -79,5 +79,6 @@
    ["-h" "--help"]])
 
 (defn -main [& args]
-  (println process-script
-   (first ((parse-opts args cli-options) :arguments))))
+  (println
+   (process-script
+    (first ((parse-opts args cli-options) :arguments)))))
