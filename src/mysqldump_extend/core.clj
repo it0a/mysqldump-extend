@@ -79,10 +79,18 @@
   (let [lines (extract-lines filename)]
     (process-script lines)))
 
-(def cli-options [])
+(defn help-str
+  [opt-map]
+  (str "Usage: mysqldump-extend [FILE]..."
+       "\n"
+       "Converts mysqldump script FILE(s) dumped with --extended-insert=FALSE into the extended-insert format"
+       "\n"))
+
+(def cli-options
+  [["-h" "--help"]])
 
 (defn -main [& args]
-  (println
-   (str/join "\n"
-             (map process-script-file
-                  ((parse-opts args cli-options) :arguments)))))
+    (let [opt-map (parse-opts args cli-options)]
+      (if (= ((opt-map :options) :help) true)
+        (println (help-str opt-map))
+        (println (str/join "\n" (map process-script-file (opt-map :arguments)))))))
