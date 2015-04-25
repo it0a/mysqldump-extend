@@ -1,14 +1,15 @@
-# mdx
+# mysqldump-extend
 
-A Clojure library designed to ... well, that part is up to you.
+Converts non-extended INSERT INTO queries into the equivalent extended-insert format.
+
+The extended-insert format is much more performant when restoring data.
 
 ## Usage
 
-FIXME
+mysqldump-extend file1.sql file2.sql file3.sql > extended.sql
 
 ## License
 
-Copyright © 2015 FIXME
+Copyright © 2015 it0a
 
-Distributed under the Eclipse Public License either version 1.0 or (at
-your option) any later version.
+MIT License
