@@ -1,6 +1,8 @@
 (ns mysqldump-extend.core
   (:require [clojure.java.io :as io]
-            [clojure.string :as str]))
+            [clojure.string :as str]
+            [clojure.tools.cli :refer [parse-opts]])
+  (:gen-class))
 
 (defn match-insert-into
   [line]
@@ -69,4 +71,13 @@
          "\n"
          (extract-postamble (extract-non-insert-lines lines)))))
 
-(spit "/home/it0a/sample-extended.txt" (process-script "/home/it0a/sample.txt"))
+(def cli-options
+  [["-l" "--limit LIMIT" "Limits the amount of values per insert"
+    :default 5000
+    :parse-fn #(Integer/parseInt %)
+    :validate [#(> % 0) "Must be a number greater than zero"]]
+   ["-h" "--help"]])
+
+(defn -main [& args]
+  (println process-script
+   (first ((parse-opts args cli-options) :arguments))))
