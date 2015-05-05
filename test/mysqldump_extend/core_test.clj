@@ -1,6 +1,6 @@
 (ns mysqldump-extend.core-test
   (:require [clojure.test :refer :all]
-            [mdx.core :refer :all]))
+            [mysqldump-extend.core :refer :all]))
 
 (deftest a-test
   (testing "FIXME, I fail."

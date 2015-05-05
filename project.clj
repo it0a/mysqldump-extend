@@ -6,4 +6,6 @@
   :dependencies [[org.clojure/clojure "1.6.0"]
                  [org.clojure/tools.cli "0.3.1"]]
   :plugins [[lein-bin "0.3.4"]]
+  :aot [mysqldump-extend.core]
+  :omit-source true
   :bin {:name "mysqldump-extend"})
