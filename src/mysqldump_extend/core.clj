@@ -71,7 +71,6 @@
   (str (extract-preamble (extract-non-insert-lines lines))
        "\n"
        (process-queries (extract-insert-lines lines))
-       "\n"
        (extract-postamble (extract-non-insert-lines lines))))
 
 (defn process-script-file
